@@ -1,10 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>News & Updates | HON. JOHANA NGENO ( NGONG)</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    .entry-item {
+      background-color: #fff;
+      border-left: 5px solid #007bff;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+    }
+    .entry-item h4 {
+      margin: 5px 0 10px;
+    }
+    .entry-item p {
+      margin: 5px 0;
+    }
+    .entry-item a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    .entry-item img {
+      max-width: 100%;
+      margin-top: 10px;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      transform: scale(0.5);
+      transform-origin: center center;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .entry-item img:hover {
+        transform: scale(1.9);
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -32,36 +68,75 @@
 <section class="py-5">
   <div class="container">
     <h2 class="text-center mb-4">Latest News & Updates</h2>
-    <div class="row g-4">
-      <div class="col-md-6">
-        <div class="card">
-          <img src="https://i.ibb.co/bgwLtSth/img-1-1746789674930.jpg" class="card-img-top" alt="News 1">
-          <div class="card-body">
-            <h5 class="card-title">New Water Project Launched</h5>
-            <p class="card-text">HON. JOHANA NGENO ( NGONG) launched a community water supply project to improve access to clean water in E/Dikir.</p>
-            <small class="text-muted">Posted: May 5, 2025</small>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card">
-          <img src="https://i.ibb.co/SWn7v5D/img-1-1746791920989.jpg" class="card-img-top" alt="News 2">
-          <div class="card-body">
-            <h5 class="card-title">Scholarships Awarded</h5>
-            <p class="card-text">Over 100 students received scholarships through HON. JOHANA NGENO ( NGONG) education empowerment program.</p>
-            <small class="text-muted">Posted: April 20, 2025</small>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div id="entriesContainer"></div>
   </div>
 </section>
 
 <!-- Footer -->
 <footer class="bg-dark text-white text-center p-3">
-  <p>&copy; 2025 HON. JOHANA NGENO ( NGONG)| Designed by Bett</p>
+  <p>&copy; 2025 HON. JOHANA NGENO ( NGONG) | Designed by Bett</p>
 </footer>
+
+<!-- Firebase Integration -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBdabXqlBQ-6yVNJKdu8Zhb9Cm_-59_u24",
+    authDomain: "bett-294a2.firebaseapp.com",
+    projectId: "bett-294a2",
+    storageBucket: "bett-294a2.appspot.com",
+    messagingSenderId: "1055511650032",
+    appId: "1:1055511650032:web:0917425908abfffc49ac35",
+    measurementId: "G-1Q4RJG62P3"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  async function fetchNewsEntries() {
+    const container = document.getElementById('entriesContainer');
+    container.innerHTML = '';
+
+    const snap = await getDocs(collection(db, 'news'));
+    snap.forEach(doc => {
+      const data = doc.data();
+      const div = document.createElement('div');
+      div.className = 'entry-item';
+      div.innerHTML = `
+        <h4>${data.title || 'Untitled'}</h4>
+        ${data.description ? `<p>${data.description}</p>` : ''}
+        ${data.caption ? `<p>${data.caption}</p>` : ''}
+        ${data.link ? `<p><a href="${data.link}" target="_blank">Read more</a></p>` : ''}
+        ${data.imageUrl ? `<img src="${data.imageUrl}" alt="${data.title || 'News'}">` : ''}
+      `;
+      container.appendChild(div);
+    });
+
+    setupImageZoomToggle(); // Only call this after entries are loaded
+  }
+
+  function setupImageZoomToggle() {
+    const images = document.querySelectorAll('.entry-item img');
+
+    images.forEach(img => {
+      img.dataset.zoomed = "false";
+
+      const toggleZoom = () => {
+        const isZoomed = img.dataset.zoomed === "true";
+        img.style.transform = isZoomed ? "scale(0.5)" : "scale(0.9)";
+        img.dataset.zoomed = isZoomed ? "false" : "true";
+      };
+
+      img.addEventListener('click', toggleZoom);
+      img.addEventListener('touchstart', toggleZoom);
+    });
+  }
+
+  fetchNewsEntries();
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
+  </html>
