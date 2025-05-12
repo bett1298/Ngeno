@@ -30,15 +30,26 @@
 
 
 }
-  
   .card-img-top {
-    width: 50%;
-    height: 150px;
-    object-fit: cover;
-    transform: scale(0.5); /* Initial size (50%) */
-    transform-origin: center center;
-    transition: transform 0.3s ease;
+  width: 60%; /* Ensures the image fills the card width */
+  height: 150px;
+  object-fit: cover; /* Ensures the image covers the area without distorting */
+  transform: scale(0.5); /* Initial size (50%) */
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+  margin: 0 auto; /* Center the image */
+}
+
+.card-img-top:hover {
+  transform: scale(1.0); /* Zoom to 190% on hover */
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .card-img-top {
+    cursor: pointer;
   }
+}
+
 
   /* Zoom on hover (desktop) */
   .card-img-top:hover {
@@ -149,8 +160,9 @@
             <div class="card h-100">
               ${data.imageUrl ? `<img src="${data.imageUrl}" class="card-img-top" alt="${data.title}">` : ''}
               <div class="card-body">
-                <h5 class="card-title">${data.title || 'Untitled Project'}</h5>
-                <p class="card-text">${data.description || 'No description available.'}</p>
+<h5 class="card-title">${data.projectTitle || 'Untitled Project'}</h5>
+<p class="card-text">${data.projectDescription || 'No description available.'}</p>
+                
               </div>
             </div>
           `;
