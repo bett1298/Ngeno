@@ -1,10 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gallery | Hon.Ngong</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    .gallery-image {
+      width: 60%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-image.zoomed {
+      width: 100%;
+      max-width: 100%;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      background-color: white;
+      border-radius: 0;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .gallery-caption {
+      font-size: 0.95rem;
+      margin-top: 5px;
+      text-align: center;
+    }
+    .gallery-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #007bff, #00c3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+  </style>
 </head>
 <body>
 
@@ -28,21 +66,12 @@
   </div>
 </nav>
 
-<!-- Gallery Preview -->
+<!-- Gallery Section -->
 <section id="gallery" class="py-5">
   <div class="container">
-    <h2 class="section-title text-center">Gallery</h2>
-    <div class="row">
-      <div class="col-md-4 mb-3">
-        <img src="https://i.ibb.co/M5sfDGVZ/img-2-1746784313550.jpg" class="img-fluid rounded shadow" alt="Event 1">
-      </div>
-      <div class="col-md-4 mb-3">
-        <img src="https://i.ibb.co/wZhNQ5m9/img-6-1746784378679.jpg" class="img-fluid rounded shadow" alt="Event 2">
-      </div>
-      <div class="col-md-4 mb-3">
-        <img src="https://i.ibb.co/nxwC8V9/img-4-1746784366539.jpg" class="img-fluid rounded shadow" alt="Event 3">
-      </div>
-    </div>
+    <h2 class="section-title text-center mb-4 gallery-title">Gallery</h2>
+    <div class="row" id="galleryContainer"></div>
+  </div>
 </section>
 
 <!-- Footer -->
@@ -50,6 +79,54 @@
   <p>&copy; 2025 Hon.Ngong | Designed by Bett</p>
 </footer>
 
+<!-- Firebase Integration for Gallery -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBdabXqlBQ-6yVNJKdu8Zhb9Cm_-59_u24",
+    authDomain: "bett-294a2.firebaseapp.com",
+    projectId: "bett-294a2",
+    storageBucket: "bett-294a2.appspot.com",
+    messagingSenderId: "1055511650032",
+    appId: "1:1055511650032:web:0917425908abfffc49ac35",
+    measurementId: "G-1Q4RJG62P3"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  async function loadGallery() {
+    const container = document.getElementById('galleryContainer');
+    container.innerHTML = '';
+
+    const snap = await getDocs(collection(db, 'gallery'));
+    snap.forEach(doc => {
+      const data = doc.data();
+      if (data.imageUrl) {
+        const col = document.createElement('div');
+        col.className = 'col-md-4 mb-4 text-center';
+        col.innerHTML = `
+          <img src="${data.imageUrl}" class="gallery-image" alt="${data.title || 'Gallery image'}" />
+          ${data.caption ? `<div class="gallery-caption">${data.caption}</div>` : ''}
+        `;
+        container.appendChild(col);
+      }
+    });
+
+    // Attach zoom toggle after DOM elements are loaded
+    document.querySelectorAll('.gallery-image').forEach(img => {
+      img.addEventListener('click', () => {
+        img.classList.toggle('zoomed');
+      });
+    });
+  }
+
+  loadGallery();
+</script>
+
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
+  </html>
