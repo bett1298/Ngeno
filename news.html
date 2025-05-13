@@ -6,81 +6,97 @@
   <title>News & Updates | HON. JOHANA NGENO (NGONG)</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
-    .entry-item {
-      background-color: #fff;
-      border-left: 5px solid #007bff;
-      padding: 15px 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-      border-radius: 8px;
-    }
-    .entry-item h4 {
-      margin: 5px 0 10px;
-    }
-    .entry-item p {
-      margin: 5px 0;
-    }
-    .entry-item a {
-      color: #007bff;
-      text-decoration: none;
-    }
-    .entry-item img {
-      max-width: 100%;
-      margin-top: 10px;
-      border-radius: 6px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-      cursor: pointer;
-      transform: scale(0.5);
-      transform-origin: center center;
-    }
+  .entry-item {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
 
-    @media (hover: hover) and (pointer: fine) {
-      .entry-item img:hover {
-        transform: scale(1.9);
-      }
+  .comment-box {
+    margin-top: 15px;
+  }
+
+  .comments {
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+
+  .comment {
+    margin-bottom: 5px;
+  }
+
+  /* Enhanced heading style */
+  .page-heading {
+    font-weight: bold;
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+    opacity: 0;
+    transform: scale(0.9);
+    animation: fadeZoomIn 5s ease-out forwards;
+  }
+
+  @keyframes fadeZoomIn {
+    to {
+      opacity: 1;
+      transform: scale(1);
     }
-  </style>
+  }
+</style>
 </head>
-<body>
-
-<!-- Navbar -->
+  <body>
+<!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">HON. JOHANA NGENO (NGONG)</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+    <a class="navbar-brand" href="#">HON. JOHANA NGENO</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navMenu">
+    <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-        <li class="nav-item"><a class="nav-link active" href="news.html">News</a></li>
-        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">News</a>
+        </li>
+                <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="projects.html">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Contact.html">Contact</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- News Section -->
-<section class="py-5">
-  <div class="container">
-    <h2 class="text-center mb-4">Latest News & Updates</h2>
-    <div id="entriesContainer"></div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="bg-dark text-white text-center p-3">
-  <p>&copy; 2025 HON. JOHANA NGENO (NGONG) | Designed by Bett</p>
-</footer>
-
-<!-- Firebase Integration -->
+<!-- Existing Content -->
+<div class="container py-5">
+  <h2 class="text-center mb-4 page-heading">Latest News & Updates</h2>
+  <div id="entriesContainer"></div>
+</div>
+</body>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const heading = document.querySelector('.page-heading');
+    setTimeout(() => heading.classList.add('visible'), 100);
+  });
+</script>
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
-  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore.js";
+  import {
+    getFirestore, collection, getDocs, doc, updateDoc, increment,
+    addDoc, serverTimestamp, onSnapshot, query, orderBy
+  } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyBdabXqlBQ-6yVNJKdu8Zhb9Cm_-59_u24",
@@ -88,61 +104,107 @@
     projectId: "bett-294a2",
     storageBucket: "bett-294a2.appspot.com",
     messagingSenderId: "1055511650032",
-    appId: "1:1055511650032:web:0917425908abfffc49ac35",
-    measurementId: "G-1Q4RJG62P3"
+    appId: "1:1055511650032:web:0917425908abfffc49ac35"
   };
 
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  async function fetchNewsEntries() {
-    const container = document.getElementById('entriesContainer');
-    container.innerHTML = '';
+  const container = document.getElementById('entriesContainer');
 
-    const snap = await getDocs(collection(db, 'news'));
-    snap.forEach(doc => {
-      const data = doc.data();
-      const title = data.newsTitle; // CORRECT
-const description = data.newsDescription; // CORRECT
-      const caption = data?.caption ?? '';
-      const link = data?.link ?? '';
-      const imageUrl = data?.imageUrl ?? '';
+  const snap = await getDocs(collection(db, 'news'));
+  const newsItems = [];
 
-      const div = document.createElement('div');
-      div.className = 'entry-item';
-      div.innerHTML = `
-        <h4>${title}</h4>
-        ${description ? `<p>${description}</p>` : ''}
-        ${caption ? `<p><em>${caption}</em></p>` : ''}
-        ${link ? `<p><a href="${link}" target="_blank">Read more</a></p>` : ''}
-        ${imageUrl ? `<img src="${imageUrl}" alt="${title}">` : ''}
-      `;
-      container.appendChild(div);
+  snap.forEach(docSnap => {
+    const data = docSnap.data();
+    newsItems.push({
+      ...data,
+      id: docSnap.id,
+      createdAt: data.createdAt?.toDate?.() || new Date(0),
     });
+  });
 
-    setupImageZoomToggle();
-  }
+  newsItems.sort((a, b) => b.createdAt - a.createdAt);
 
-  function setupImageZoomToggle() {
-    const images = document.querySelectorAll('.entry-item img');
+  newsItems.forEach(news => {
+    const div = document.createElement('div');
+    div.className = 'entry-item';
+    div.innerHTML = `
+      <h4>${news.newsTitle}</h4>
+      <small class="text-muted">Posted: ${news.createdAt.toLocaleString()}</small>
+      <p>${news.newsDescription || ''}</p>
+      ${news.imageUrl ? `<img src="${news.imageUrl}" class="img-fluid rounded mb-3" style="max-width:100%;">` : ''}
+      <div>
+        <button class="btn btn-outline-primary btn-sm like-btn" data-id="${news.id}">Like (<span id="like-count-${news.id}">0</span>)</button>
+        <button class="btn btn-outline-secondary btn-sm share-btn" data-id="${news.id}">Share</button>
+      </div>
+      <div class="comment-box">
+        <form data-id="${news.id}" class="comment-form mt-2">
+          <input type="text" class="form-control mb-2" placeholder="Write a comment..." required />
+          <button type="submit" class="btn btn-sm btn-dark">Post Comment</button>
+        </form>
+        <div class="comments" id="comments-${news.id}">Loading comments...</div>
+      </div>
+    `;
+    container.appendChild(div);
 
-    images.forEach(img => {
-      img.dataset.zoomed = "false";
+    // Load like count
+    const likeCountEl = document.getElementById(`like-count-${news.id}`);
+    likeCountEl.textContent = news.likes || 0;
 
-      const toggleZoom = () => {
-        const isZoomed = img.dataset.zoomed === "true";
-        img.style.transform = isZoomed ? "scale(0.5)" : "scale(0.9)";
-        img.dataset.zoomed = isZoomed ? "false" : "true";
-      };
-
-      img.addEventListener('click', toggleZoom);
-      img.addEventListener('touchstart', toggleZoom);
+    // Load comments
+    const commentsDiv = document.getElementById(`comments-${news.id}`);
+    const commentQuery = query(collection(db, `news/${news.id}/comments`), orderBy("createdAt", "desc"));
+    onSnapshot(commentQuery, snapshot => {
+      commentsDiv.innerHTML = '';
+      snapshot.forEach(doc => {
+        const c = doc.data();
+        commentsDiv.innerHTML += `<div class="comment">${c.text}</div>`;
+      });
+      if (snapshot.empty) commentsDiv.innerHTML = '<em>No comments yet.</em>';
     });
-  }
+  });
 
-  fetchNewsEntries();
+  // Handle likes
+  container.addEventListener('click', async e => {
+    if (e.target.classList.contains('like-btn')) {
+      const id = e.target.dataset.id;
+      const docRef = doc(db, 'news', id);
+      await updateDoc(docRef, { likes: increment(1) });
+      const countEl = document.getElementById(`like-count-${id}`);
+      countEl.textContent = parseInt(countEl.textContent) + 1;
+    }
+
+    if (e.target.classList.contains('share-btn')) {
+      const id = e.target.dataset.id;
+      const url = `${window.location.origin}/news.html?id=${id}`;
+      if (navigator.share) {
+        navigator.share({ title: "News Update", url });
+      } else {
+        navigator.clipboard.writeText(url);
+        alert("Link copied to clipboard!");
+      }
+    }
+  });
+
+  // Handle comments
+  container.addEventListener('submit', async e => {
+    if (e.target.classList.contains('comment-form')) {
+      e.preventDefault();
+      const id = e.target.dataset.id;
+      const input = e.target.querySelector('input');
+      const text = input.value.trim();
+      if (!text) return;
+      await addDoc(collection(db, `news/${id}/comments`), {
+        text,
+        createdAt: serverTimestamp()
+      });
+      input.value = '';
+    }
+  });
+  
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-      </html>
+    </html>
