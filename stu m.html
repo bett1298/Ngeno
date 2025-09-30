@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ✅ Adsense verification meta tag -->
+  <meta name="google-adsense-account" content="ca-pub-4347535849525164">
+
+  <!-- ✅ Adsense script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4347535849525164"
+     crossorigin="anonymous"></script>
+
+  <!-- SEO Meta Tags -->
+  <title>HON. JOHANA NGENO | Official Website for Ngong & Emurua Dikirr constituency MP</title>
+  <meta name="description" content="Welcome to the official website of Hon. Johana Ngeno – MP for Ngong and Emurwo Dikirr. Get the latest updates, projects, news, and community engagements.">
+  <meta name="keywords" content="Hon Johana Ngeno (Ngong) MP Emurua Dikirr Constituency, Kenya politics, community development, Ngeno official site">
+  <meta name="author" content="Bett">
+  <link rel="icon" href="https://i.ibb.co/fVsb2Dqn/img-1-1746789744473.jpg" />
+
+  <!-- Social Sharing Meta Tags -->
+  <meta property="og:title" content="HON. JOHANA NGENO | Official Website" />
+  <meta property="og:description" content="Official platform for Hon. Johana Ngeno - updates, projects, and community development news." />
+  <meta property="og:image" content="https://i.ibb.co/fVsb2Dqn/img-1-1746789744473.jpg" />
+  <meta property="og:url" content="https://bett1298.github.io/Ngeno/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary-color: #025464;
+      --secondary-color: #E57C23;
+      --light-color: #F8F1F1;
+      --dark-color: #0A2D42;
+    }
+    
+    body {
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      color: var(--light-color) !important;
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .nav-link:hover {
+      color: var(--secondary-color) !important;
+    }
+    
+    .hero {
+      background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+      color: white;
+      padding: 140px 20px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff10"><polygon points="0,0 1000,50 1000,100 0,100"></polygon></svg>');
+      background-size: cover;
+    }
+    
+    .hero img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero h1 {
+      font-weight: 800;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero .lead {
+      font-size: 1.25rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .section-title {
+      position: relative;
+      margin-bottom: 3rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--secondary-color);
+      border-radius: 2px;
+    }
+    
+    .card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      overflow: hidden;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--dark-color);
+      border-color: var(--dark-color);
+    }
+    
+    .btn-outline-primary {
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .btn-outline-primary:hover {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .image-slider-container {
+      overflow: hidden;
+      width: 100%;
+      padding: 40px 0;
+      background: linear-gradient(to right, var(--light-color), white);
+    }
+    
+    .image-slider {
+      display: flex;
+      gap: 20px;
+      animation: slideGroup 25s infinite linear;
+    }
+    
+    .image-slider img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    @keyframes slideGroup {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-300px * 3 - 20px * 3)); }
+    }
+    
+    .news-card, .gallery-card {
+      height: 100%;
+    }
+    
+    footer {
+      background-color: var(--dark-color);
+      color: white;
+      padding: 40px 0 20px;
+    }
+    
+    .social-icons a {
+      color: white;
+      font-size: 1.5rem;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+    
+    .social-icons a:hover {
+      color: var(--secondary-color);
+    }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--primary-color);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+      transition: all 0.3s;
+    }
+    
+    .back-to-top:hover {
+      background: var(--secondary-color);
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    .feature-box {
+      text-align: center;
+      padding: 30px 20px;
+      border-radius: 10px;
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+    
+    .feature-box:hover {
+      transform: translateY(-5px);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+    
+    .adsbygoogle {
+      display: block;
+      margin: 20px 0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    .placeholder-content {
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8f9fa;
+      border-radius: 10px;
+      color: #6c757d;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 120px 20px 80px;
+      }
+      
+      .hero img {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .image-slider img {
+        width: 250px;
+        height: 180px;
+      }
+      
+      @keyframes slideGroup {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-250px * 3 - 20px * 3)); }
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <i class="fas fa-landmark me-2"></i>HON. JOHANA NGENO (NGONG)
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#news">News</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link text-warning" href="admin.html"><i class="fas fa-cog me-1"></i>Admin</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section id="home" class="hero d-flex align-items-center justify-content-center">
+  <div class="container text-center">
+    <img src="https://cdn.standardmedia.co.ke/images/tuesday/rgtedvuzkbolil30y05f57285d8aa4e.jpg" alt="Hon. Johana Ngeno" class="rounded-circle mb-4" />
+    <h1 class="display-5 fw-bold">HON. JOHANA NGENO (NGONG)</h1>
+    <p class="text-light small mb-2">Member of Parliament for Emurua Dikirr Constituency</p>
+    <p class="lead">Committed to Transforming Ngong & Emurua Dikirr Through Visionary Leadership</p>
+    <a href="#about" class="btn btn-outline-light mt-3">Learn More <i class="fas fa-arrow-down ms-1"></i></a>
+  </div>
+</section>
+
+<!-- AdSense Banner Ad -->
+<div class="container mt-4">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4347535849525164"
+       data-ad-slot="1234567890"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="image-slider-container">
+  <div class="image-slider">
+    <img src="https://i.ibb.co/fVsb2Dqn/img-1-1746789744473.jpg" alt="Hon. Ngeno Event 1" />
+    <img src="https://i.ibb.co/wZhNQ5m9/img-6-1746784378679.jpg" alt="Hon. Ngeno Event 2" />
+    <img src="https://i.ibb.co/3y5rYmQb/img-1-1746789817903.jpg" alt="Hon. Ngeno Event 3" />
+    <img src="https://i.ibb.co/fVsb2Dqn/img-1-1746789744473.jpg" alt="Hon. Ngeno Event 4" />
+    <img src="https://i.ibb.co/wZhNQ5m9/img-6-1746784378679.jpg" alt="Hon. Ngeno Event 5" />
+    <img src="https://i.ibb.co/3y5rYmQb/img-1-1746789817903.jpg" alt="Hon. Ngeno Event 6" />
+  </div>
+</div>
+
+<section id="about" class="py-5">
+  <div class="container">
+    <h2 class="section-title text-center">About HON. JOHANA NGENO (NGONG)</h2>
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <p class="text-center mb-5">Hon. Johana Ngeno is a dedicated political leader focused on improving infrastructure, education, and healthcare in Ngong and Emurua Dikirr Constituency. Known for his integrity and transparency, he champions community-driven development and empowerment for a better future.</p>
+      </div>
+    </div>
+    
+    <div class="row mt-4">
+      <div class="col-md-4 mb-4">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <i class="fas fa-hands-helping"></i>
+          </div>
+          <h4>Community Development</h4>
+          <p>Focused on empowering local communities through sustainable development projects and initiatives.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h4>Education</h4>
+          <p>Committed to improving educational facilities and opportunities for the youth in the constituency.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-box">
+          <div class="feature-icon">
+            <i class="fas fa-clinic-medical"></i>
+          </div>
+          <h4>Healthcare</h4>
+          <p>Working to enhance healthcare services and accessibility for all constituents.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AdSense In-Article Ad -->
+<div class="container my-5">
+  <ins class="adsbygoogle"
+       style="display:block; text-align:center;"
+       data-ad-layout="in-article"
+       data-ad-format="fluid"
+       data-ad-client="ca-pub-4347535849525164"
+       data-ad-slot="9876543210"></ins>
+</div>
+
+<section id="news" class="bg-light py-5">
+  <div class="container">
+    <h2 class="section-title text-center">Latest News</h2>
+    <div class="row" id="newsPreview">
+      <!-- News content will be loaded here -->
+      <div class="col-12">
+        <div class="placeholder-content">
+          <div class="text-center">
+            <i class="fas fa-newspaper fa-3x mb-3 text-muted"></i>
+            <p>Loading latest news...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <a href="news.html" class="btn btn-primary">View All News <i class="fas fa-arrow-right ms-1"></i></a>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="py-5">
+  <div class="container">
+    <h2 class="section-title text-center">Gallery</h2>
+    <div class="row" id="galleryItems">
+      <!-- Gallery content will be loaded here -->
+      <div class="col-12">
+        <div class="placeholder-content">
+          <div class="text-center">
+            <i class="fas fa-images fa-3x mb-3 text-muted"></i>
+            <p>Loading gallery images...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <a href="gallery.html" class="btn btn-outline-primary">View Full Gallery <i class="fas fa-external-link-alt ms-1"></i></a>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="section-title text-center">Development Projects</h2>
+    <p class="text-center text-muted mb-5">Discover ongoing and completed projects in Ngong & Emurua Dikirr Constituency that impact lives and transform the future.</p>
+    
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="card project-card h-100">
+          <img src="https://via.placeholder.com/600x400/025464/ffffff?text=Infrastructure+Project" class="card-img-top" alt="Infrastructure Project">
+          <div class="card-body">
+            <h5 class="card-title">Road Infrastructure</h5>
+            <p class="card-text">Improving road networks to enhance connectivity and economic activities in the constituency.</p>
+            <span class="badge bg-success">Ongoing</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card project-card h-100">
+          <img src="https://via.placeholder.com/600x400/E57C23/ffffff?text=Education+Initiative" class="card-img-top" alt="Education Initiative">
+          <div class="card-body">
+            <h5 class="card-title">School Renovation</h5>
+            <p class="card-text">Renovating and equipping schools to provide better learning environments for students.</p>
+            <span class="badge bg-primary">Completed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-3">
+      <a href="projects.html" class="btn btn-primary">View More Projects <i class="fas fa-arrow-right ms-1"></i></a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="py-5">
+  <div class="container">
+    <h2 class="section-title text-center">Contact</h2>
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <div class="card shadow-sm">
+          <div class="card-body p-4">
+            <div class="row text-center">
+              <div class="col-md-4 mb-3">
+                <i class="fas fa-map-marker-alt fa-2x text-primary mb-2"></i>
+                <h5>Address</h5>
+                <p>Emurua Dikirr Constituency<br>Narok County, Kenya</p>
+              </div>
+              <div class="col-md-4 mb-3">
+                <i class="fas fa-phone fa-2x text-primary mb-2"></i>
+                <h5>Phone</h5>
+                <p>+254 797 612 155</p>
+              </div>
+              <div class="col-md-4 mb-3">
+                <i class="fas fa-envelope fa-2x text-primary mb-2"></i>
+                <h5>Email</h5>
+                <p>info@ngenomp.com</p>
+              </div>
+            </div>
+            <div class="text-center mt-4">
+              <a href="contact.html" class="btn btn-primary">Send Message <i class="fas fa-paper-plane ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="support" class="bg-dark text-white py-5">
+  <div class="container text-center">
+    <h2>Support the Developer</h2>
+    <p class="mb-4">If you appreciate this website and would like to support the developer, please consider contributing through the link below.</p>
+    <a href="https://www.mchanga.africa/fundraiser/115085" target="_blank" class="btn btn-outline-light">
+      <i class="fas fa-hand-holding-heart me-2"></i>Support via M-Changa
+    </a>
+  </div>
+</section>
+
+<footer class="text-center">
+  <div class="container">
+    <div class="social-icons mb-4">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p class="mb-1">&copy; 2025 HON. JOHANA NGENO (NGONG) – OFFICIAL WEBSITE. All rights reserved.</p>
+    <p class="text-light small">Created by Bett | 
+      <a href="tel:+254797612155" class="text-light text-decoration-underline">+254797612155</a>
+    </p>
+  </div>
+</footer>
+
+<a href="#" class="back-to-top">
+  <i class="fas fa-arrow-up"></i>
+</a>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+  import { getFirestore, collection, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBdabXqlBQ-6yVNJKdu8Zhb9Cm_-59_u24",
+    authDomain: "bett-294a2.firebaseapp.com",
+    projectId: "bett-294a2",
+    storageBucket: "bett-294a2.appspot.com",
+    messagingSenderId: "1055511650032",
+    appId: "1:1055511650032:web:0917425908abfffc49ac35"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  async function loadNews() {
+    try {
+      const container = document.getElementById("newsPreview");
+      const newsQuery = query(collection(db, "news"), orderBy("createdAt", "desc"), limit(3));
+      const snapshot = await getDocs(newsQuery);
+      
+      if (snapshot.empty) {
+        container.innerHTML = `
+          <div class="col-12">
+            <div class="alert alert-info text-center">
+              <i class="fas fa-info-circle me-2"></i>No news articles available at the moment.
+            </div>
+          </div>
+        `;
+        return;
+      }
+      
+      container.innerHTML = "";
+      snapshot.forEach(doc => {
+        const news = doc.data();
+        container.innerHTML += `
+          <div class="col-md-4 mb-4">
+            <div class="card news-card h-100">
+              <img src="${news.imageUrl}" class="card-img-top" alt="${news.newsTitle}" style="height: 200px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title">${news.newsTitle}</h5>
+                <p class="card-text">${news.newsDescription?.substring(0, 120)}...</p>
+                <a href="news.html?id=${doc.id}" class="btn btn-sm btn-primary">Read More</a>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    } catch (error) {
+      console.error("Error loading news:", error);
+      const container = document.getElementById("newsPreview");
+      container.innerHTML = `
+        <div class="col-12">
+          <div class="alert alert-danger text-center">
+            <i class="fas fa-exclamation-triangle me-2"></i>Failed to load news. Please try again later.
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  async function loadGallery() {
+    try {
+      const container = document.getElementById("galleryItems");
+      const galleryQuery = query(collection(db, "gallery"), orderBy("createdAt", "desc"), limit(4));
+      const snapshot = await getDocs(galleryQuery);
+      
+      if (snapshot.empty) {
+        container.innerHTML = `
+          <div class="col-12">
+            <div class="alert alert-info text-center">
+              <i class="fas fa-info-circle me-2"></i>No gallery images available at the moment.
+            </div>
+          </div>
+        `;
+        return;
+      }
+      
+      container.innerHTML = "";
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        container.innerHTML += `
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card gallery-card h-100">
+              <img src="${data.imageUrl}" class="card-img-top" alt="Gallery Image" style="height: 200px; object-fit: cover;">
+              <div class="card-body">
+                <p class="card-text text-muted small">${data.title || 'Event'}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    } catch (error) {
+      console.error("Error loading gallery:", error);
+      const container = document.getElementById("galleryItems");
+      container.innerHTML = `
+        <div class="col-12">
+          <div class="alert alert-danger text-center">
+            <i class="fas fa-exclamation-triangle me-2"></i>Failed to load gallery. Please try again later.
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  // Initialize AdSense ads
+  function initializeAdSense() {
+    try {
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (error) {
+      console.error("AdSense initialization error:", error);
+    }
+  }
+
+  // Back to top button functionality
+  function setupBackToTop() {
+    const backToTopButton = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.style.display = 'flex';
+      } else {
+        backToTopButton.style.display = 'none';
+      }
+    });
+    
+    backToTopButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    loadNews();
+    loadGallery();
+    initializeAdSense();
+    setupBackToTop();
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
